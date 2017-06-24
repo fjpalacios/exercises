@@ -1,10 +1,10 @@
-# A simple code to practice recursion using the Fibonacci Sequence
+# A simple code to practice recursion using the Fibonacci sequence
 
 def fibonacci(number):
-   if number <= 1:
-       return 1
-   else:
-       return(fibonacci(number-1) + fibonacci(number-2))
+    if number <= 1:
+        return 1
+    else:
+        return(fibonacci(number-1) + fibonacci(number-2))
 
 while True:
     try:
