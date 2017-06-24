@@ -14,20 +14,20 @@ def main():
         try:
             number = int(input("Enter a radius: "))
         except ValueError:
-            print("Plese, enter a positive integer greater than 0")
+            print("Please, enter a positive integer greater than 0")
             continue
         else:
             while number <= 0:
-                print("Plese, enter a positive integer greater than 0")
+                print("Please, enter a positive integer greater than 0")
                 try:
                     number = int(input("Enter a radius: "))
                 except ValueError:
                     continue
             circle = Circle(number)
             print("The area of a circle with radius {} is {} and its perimeter is {}". format(number, circle.area(), circle.perimeter()))
-            continueprogram()
+            continueProgram()
 
-def continueprogram():
+def continueProgram():
     exit = input("Do you want to continue with the program? [y/n] ")
     if exit == 'y':
         main()
