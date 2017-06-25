@@ -9,6 +9,16 @@ class Circle:
     def perimeter(self):
         return 2 * Circle.pi * self.radius
 
+def continueProgram():
+    exit = input("Do you want to continue with the program? [Y/n] ")
+    if exit == "y" or exit == "":
+        main()
+    elif exit == "n":
+        raise SystemExit
+    else:
+        print("You entered {}, but it is a wrong command. Good bye!". format(exit))
+        raise SystemExit
+
 def main():
     while True:
         try:
@@ -26,16 +36,6 @@ def main():
             circle = Circle(number)
             print("The area of a circle with radius {} is {} and its perimeter is {}". format(number, circle.area(), circle.perimeter()))
             continueProgram()
-
-def continueProgram():
-    exit = input("Do you want to continue with the program? [y/n] ")
-    if exit == 'y':
-        main()
-    elif exit == 'n':
-        raise SystemExit
-    else:
-        print("You entered {}, but it is a wrong command. Good bye!". format(exit))
-        raise SystemExit
 
 if __name__ == "__main__":
     main()
