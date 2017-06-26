@@ -1,11 +1,13 @@
 # A simple code to practice recursion using the Factorial of a number (n!)
 
+
 def factorial(number):
     factorial = 1
     while number > 0:
         factorial = factorial * number
         number -= 1
     return factorial
+
 
 def continueProgram():
     exit = input("Do you want to continue with the program? [Y/n] ")
@@ -14,8 +16,10 @@ def continueProgram():
     elif exit == "n":
         raise SystemExit
     else:
-        print("You entered {}, but it is a wrong command. Good bye!". format(exit))
+        print("You entered {}, but it is a wrong command. Good bye!"
+              .format(exit))
         raise SystemExit
+
 
 def main():
     while True:
@@ -34,6 +38,7 @@ def main():
             valueFactorial = factorial(numberOfTerms)
             print("Factorial of", numberOfTerms, "is", valueFactorial)
             continueProgram()
+
 
 if __name__ == "__main__":
     main()
