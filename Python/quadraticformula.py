@@ -53,7 +53,6 @@ def quadraticFormula(termA, termB, termC):
         print("Solution one: {}".format(Decimal(solutionOne).normalize()))
         print("Solution two: {}".format(Decimal(solutionTwo).normalize()))
     else:
-        print("{}, {} y {}".format(termA, termB, termC))
         solutionOne = (-(termB)+sqrt(termB**2-4*termA*termC))/(2*termA)
         solutionTwo = (-(termB)-sqrt(termB**2-4*termA*termC))/(2*termA)
         print("Solution one: {}".format(Decimal(solutionOne).normalize()))
