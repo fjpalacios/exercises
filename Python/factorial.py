@@ -2,11 +2,10 @@
 
 
 def factorial(number):
-    factorial = 1
-    while number > 0:
-        factorial = factorial * number
-        number -= 1
-    return factorial
+    if number <= 1:
+        return 1
+    else:
+        return(number * factorial(number-1))
 
 
 def continueProgram():
