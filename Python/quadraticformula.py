@@ -28,7 +28,7 @@ class QuadraticFormula:
 
     def formula(self):
         solutions = []
-        if self.termB == "x":
+        if self.termB == 0:
             if self.termA < 0:
                 self.termA = -(self.termA)
             elif self.termC < 0:
@@ -37,7 +37,7 @@ class QuadraticFormula:
             solutionTwo = -(solutionOne)
             solutions.append(solutionOne)
             solutions.append(solutionTwo)
-        elif self.termC == "x":
+        elif self.termC == 0:
             solutionOne = 0
             solutionTwo = -(self.termB)/self.termA
             solutions.append(solutionOne)
