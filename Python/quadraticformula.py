@@ -37,26 +37,35 @@ def setSide(term, termA=None, termB=None):
             print("Please, enter a proper value")
 
 
+def getDiscriminant(termA, termB, termC):
+    return termB**2-4*termA*termC
+
+
 def quadraticFormula(termA, termB, termC):
-    if termB == "x":
-        if termA < 0:
-            termA = -(termA)
-        elif termC < 0:
-            termC = -(termC)
-        solutionOne = sqrt(termC/termA)
-        solutionTwo = -(solutionOne)
-        print("Solution one: {}".format(Decimal(solutionOne).normalize()))
-        print("Solution two: {}".format(Decimal(solutionTwo).normalize()))
-    elif termC == "x":
-        solutionOne = 0
-        solutionTwo = -(termB)/termA
-        print("Solution one: {}".format(Decimal(solutionOne).normalize()))
-        print("Solution two: {}".format(Decimal(solutionTwo).normalize()))
+    if getDiscriminant(termA, termB, termC) >= 0:
+        if termB == "x":
+            if termA < 0:
+                termA = -(termA)
+            elif termC < 0:
+                termC = -(termC)
+            solutionOne = sqrt(termC/termA)
+            solutionTwo = -(solutionOne)
+            print("Solution one: {}".format(Decimal(solutionOne).normalize()))
+            print("Solution two: {}".format(Decimal(solutionTwo).normalize()))
+        elif termC == "x":
+            solutionOne = 0
+            solutionTwo = -(termB)/termA
+            print("Solution one: {}".format(Decimal(solutionOne).normalize()))
+            print("Solution two: {}".format(Decimal(solutionTwo).normalize()))
+        else:
+            solutionOne = ((-termB+sqrt(getDiscriminant(termA, termB, termC)))
+                           / (2*termA))
+            solutionTwo = ((-termB-sqrt(getDiscriminant(termA, termB, termC)))
+                           / (2*termA))
+            print("Solution one: {}".format(Decimal(solutionOne).normalize()))
+            print("Solution two: {}".format(Decimal(solutionTwo).normalize()))
     else:
-        solutionOne = (-(termB)+sqrt(termB**2-4*termA*termC))/(2*termA)
-        solutionTwo = (-(termB)-sqrt(termB**2-4*termA*termC))/(2*termA)
-        print("Solution one: {}".format(Decimal(solutionOne).normalize()))
-        print("Solution two: {}".format(Decimal(solutionTwo).normalize()))
+        print("This equation has no real solutions")
 
 
 def continueProgram():
