@@ -10,7 +10,7 @@ def main():
     legOne = setSide("first leg")
     legTwo = setSide("second leg", legOne)
     hypotenuse = setSide("hypotenuse", legOne, legTwo)
-    pythagorean(legOne, legTwo, hypotenuse)
+    missingSide(legOne, legTwo, hypotenuse)
     continueProgram()
 
 
@@ -34,16 +34,26 @@ def setSide(side, legOne=None, legTwo=None):
             print("Please, enter a proper value")
 
 
+def missingSide(legOne, legTwo, hypotenuse):
+    missingSide = pythagorean(legOne, legTwo, hypotenuse)
+    if legOne == "x":
+        print("Leg one is: {}".format(Decimal(missingSide).normalize()))
+    elif legTwo == "x":
+        print("Leg two is: {}".format(Decimal(missingSide).normalize()))
+    else:
+        print("Hypotenuse is: {}".format(Decimal(missingSide).normalize()))
+
+
 def pythagorean(legOne, legTwo, hypotenuse):
     if legOne == "x":
         missingSide = sqrt((hypotenuse**2) - (legTwo**2))
-        print("Leg one is: {}".format(Decimal(missingSide).normalize()))
+        return missingSide
     elif legTwo == "x":
         missingSide = sqrt((hypotenuse**2) - (legOne**2))
-        print("Leg two is: {}".format(Decimal(missingSide).normalize()))
+        return missingSide
     else:
         missingSide = sqrt((legOne**2) + (legTwo**2))
-        print("Hypotenuse is: {}".format(Decimal(missingSide).normalize()))
+        return missingSide
 
 
 def continueProgram():
