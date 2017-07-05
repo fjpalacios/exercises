@@ -41,7 +41,7 @@ def main():
                 except ValueError:
                     continue
             circle = Circle(number)
-            print("The area of a circle with radius {} is {}" +
+            print("The area of a circle with radius {} is {}"
                   " and its perimeter is {}"
                   .format(number, circle.area(), circle.perimeter()))
             continueProgram()
