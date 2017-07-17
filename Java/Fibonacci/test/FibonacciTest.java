@@ -1,30 +1,21 @@
 
-import java.util.Arrays;
-import org.junit.Test;
-import static org.junit.Assert.*;
-import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
-import org.junit.runners.Parameterized.Parameters;
+import static org.testng.Assert.*;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
 
-@RunWith(value = Parameterized.class)
 public class FibonacciTest {
 
-    @Parameters
-    public static Iterable<Object[]> getData() {
-        return Arrays.asList(new Object[][]{
+    private static long input, expected;
+
+    @DataProvider(name = "fibonacci")
+    public static Object[][] fibonacci() {
+        return new Object[][]{
             {0, 1}, {1, 1}, {4, 5}, {5, 8}
-        });
+        };
     }
 
-    private long input, expected;
-
-    public FibonacciTest(long input, long expected) {
-        this.input = input;
-        this.expected = expected;
-    }
-
-    @Test
-    public void testFibonacci() {
+    @Test(dataProvider = "fibonacci", timeOut = 1000)
+    public void testFibonacci(long input, long expected) {
         long result = Fibonacci.fibonacci(input);
         assertEquals(expected, result);
     }
