@@ -4,40 +4,40 @@
 def main():
     while True:
         try:
-            numberOfDisks = int(input("Enter a number of disks: "))
+            number_of_disks = int(input("Enter a number of disks: "))
         except ValueError:
             print("In order to play enter one disk at least")
             continue
         else:
-            while numberOfDisks <= 0:
+            while number_of_disks <= 0:
                 print("In order to play enter one disk at least")
                 try:
-                    numberOfDisks = int(input("Enter a number of disks: "))
+                    number_of_disks = int(input("Enter a number of disks: "))
                 except ValueError:
                     continue
-            numberOfMoves = 2**numberOfDisks - 1
+            number_of_moves = 2**number_of_disks - 1
             print("At least {} moves required to solve this game"
-                  .format(numberOfMoves))
-            hanoi(numberOfDisks, 1, 2, 3)
-            continueProgram()
+                  .format(number_of_moves))
+            hanoi(number_of_disks, 1, 2, 3)
+            continue_program()
 
 
-def hanoi(numberOfDisks, initialStack, auxiliarStack, finalStack):
-    if numberOfDisks == 1:
+def hanoi(number_of_disks, initial_stack, auxiliar_stack, final_stack):
+    if number_of_disks == 1:
         print("Moving disk {} from stack {} to stack {}"
-              .format(numberOfDisks, initialStack, finalStack))
+              .format(number_of_disks, initial_stack, final_stack))
     else:
-        hanoi(numberOfDisks-1, initialStack, finalStack, auxiliarStack)
+        hanoi(number_of_disks-1, initial_stack, final_stack, auxiliar_stack)
         print("Moving disk {} from stack {} to stack {}"
-              .format(numberOfDisks, initialStack, finalStack))
-        hanoi(numberOfDisks-1, auxiliarStack, initialStack, finalStack)
+              .format(number_of_disks, initial_stack, final_stack))
+        hanoi(number_of_disks-1, auxiliar_stack, initial_stack, final_stack)
 
 
-def continueProgram():
-    exit = input("Do you want to continue with the program? [Y/n] ")
-    if exit == "y" or exit == "":
+def continue_program():
+    system_exit = input("Do you want to continue with the program? [Y/n] ")
+    if system_exit == "y" or system_exit == "":
         main()
-    elif exit == "n":
+    elif system_exit == "n":
         raise SystemExit
     else:
         print("You entered {}, but it is a wrong command. Good bye!"

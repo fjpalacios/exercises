@@ -4,55 +4,54 @@
 def main():
     while True:
         try:
-            numberOfPrimeNumbers = int(input("How many prime numbers " +
-                                             "do you want to find out? "))
+            number_of_prime_numbers = int(
+                input("How many prime numbers do you want to find out? "))
         except ValueError:
             print("Please, enter a positive integer greater than 0")
             continue
         else:
-            while numberOfPrimeNumbers <= 0:
+            while number_of_prime_numbers <= 0:
                 print("Please, enter a positive integer greater than 0")
                 try:
-                    numberOfPrimeNumbers = int(input("How many prime numbers" +
-                                                     " do you want " +
-                                                     " to find out? "))
+                    number_of_prime_numbers = int(
+                        input("How many prime numbers do you want " +
+                              "to find out? "))
                 except ValueError:
                     continue
             print("The first {} prime numbers are:"
-                  .format(numberOfPrimeNumbers))
-            print(primeNumbersGenerator(numberOfPrimeNumbers))
-            continueProgram()
+                  .format(number_of_prime_numbers))
+            print(prime_numbers_generator(number_of_prime_numbers))
+            continue_program()
 
 
-def primeNumbersGenerator(numberOfPrimeNumbers):
-    primeNumbers = []
+def prime_numbers_generator(number_of_prime_numbers):
+    prime_numbers = []
     count = 0
     number = 2
-    while count < numberOfPrimeNumbers:
-        if isPrime(number):
-            primeNumbers.append(number)
+    while count < number_of_prime_numbers:
+        if is_prime(number):
+            prime_numbers.append(number)
             count += 1
         number += 1
-    return " ".join(map(str, primeNumbers))
+    return " ".join(map(str, prime_numbers))
 
 
-def isPrime(number):
+def is_prime(number):
     for i in range(2, number):
         if number % i == 0:
             return False
-    else:
-        return True
+    return True
 
 
-def continueProgram():
-    exit = input("Do you want to continue with the program? [Y/n] ")
-    if exit == "y" or exit == "":
+def continue_program():
+    system_exit = input("Do you want to continue with the program? [Y/n] ")
+    if system_exit == "y" or system_exit == "":
         main()
-    elif exit == "n":
+    elif system_exit == "n":
         raise SystemExit
     else:
         print("You entered {}, but it is a wrong command. Good bye!"
-              . format(exit))
+              .format(exit))
         raise SystemExit
 
 
