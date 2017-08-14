@@ -18,37 +18,36 @@ def main():
                                        + " if is a prime number: "))
                 except ValueError:
                     continue
-            isPrimeNumber = isPrime(number)
-            if isPrimeNumber:
+            is_prime_number = is_prime(number)
+            if is_prime_number:
                 print("{} is a prime number".format(number))
             else:
                 print("{} is not a prime number ({})"
-                      .format(number, primeFactors(number)))
-            continueProgram()
+                      .format(number, prime_factors(number)))
+            continue_program()
 
 
-def isPrime(number):
+def is_prime(number):
     for i in range(2, number):
         if number % i == 0:
             return False
-    else:
-        return True
+    return True
 
 
-def primeFactors(number):
-    primeFactors = []
+def prime_factors(number):
+    _prime_factors = []
     for i in range(2, number):
         while number % i == 0:
             number = number / i
-            primeFactors.append(i)
-    return '*'.join(map(str, primeFactors))
+            _prime_factors.append(i)
+    return '*'.join(map(str, _prime_factors))
 
 
-def continueProgram():
-    exit = input("Do you want to continue with the program? [Y/n] ")
-    if exit == "y" or exit == "":
+def continue_program():
+    system_exit = input("Do you want to continue with the program? [Y/n] ")
+    if system_exit == "y" or system_exit == "":
         main()
-    elif exit == "n":
+    elif system_exit == "n":
         raise SystemExit
     else:
         print("You entered {}, but it is a wrong command. Good bye!"

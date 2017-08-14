@@ -1,66 +1,62 @@
 # A simple code to practice Control Structures solving the missing side
 # of a right triangle using the Pythagorean theorem
 
-
 from math import sqrt
 from decimal import Decimal
 
 
 def main():
-    legOne = setSide("first leg")
-    legTwo = setSide("second leg", legOne)
-    hypotenuse = setSide("hypotenuse", legOne, legTwo)
-    missingSide(legOne, legTwo, hypotenuse)
-    continueProgram()
+    leg_one = set_side("first leg")
+    leg_two = set_side("second leg", leg_one)
+    hypotenuse = set_side("hypotenuse", leg_one, leg_two)
+    missing_side(leg_one, leg_two, hypotenuse)
+    continue_program()
 
 
-def setSide(side, legOne=None, legTwo=None):
+def set_side(side, leg_one=None, leg_two=None):
     while True:
-        if legOne == "x" or legTwo == "x":
-            sideValue = input("Enter {}: ".format(side))
+        if leg_one == "x" or leg_two == "x":
+            side_value = input("Enter {}: ".format(side))
         else:
-            sideValue = input("Enter {} (if it is the missing side enter x): "
-                              .format(side))
-        if sideValue != "x":
+            side_value = input("Enter {} (if it is the missing side enter x): "
+                               .format(side))
+        if side_value != "x":
             try:
-                return float(sideValue)
-                break
+                return float(side_value)
             except ValueError:
                 print("Please, enter a proper value")
-        elif sideValue == "x" and legOne != "x" and legTwo != "x":
-            return sideValue
-            break
+        elif side_value == "x" and leg_one != "x" and leg_two != "x":
+            return side_value
         else:
             print("Please, enter a proper value")
 
 
-def missingSide(legOne, legTwo, hypotenuse):
-    missingSide = pythagorean(legOne, legTwo, hypotenuse)
-    if legOne == "x":
-        print("Leg one is: {}".format(Decimal(missingSide).normalize()))
-    elif legTwo == "x":
-        print("Leg two is: {}".format(Decimal(missingSide).normalize()))
+def missing_side(leg_one, leg_two, hypotenuse):
+    _missing_side = pythagorean(leg_one, leg_two, hypotenuse)
+    if leg_one == "x":
+        print("Leg one is: {}".format(Decimal(_missing_side).normalize()))
+    elif leg_two == "x":
+        print("Leg two is: {}".format(Decimal(_missing_side).normalize()))
     else:
-        print("Hypotenuse is: {}".format(Decimal(missingSide).normalize()))
+        print("Hypotenuse is: {}".format(Decimal(_missing_side).normalize()))
 
 
-def pythagorean(legOne, legTwo, hypotenuse):
-    if legOne == "x":
-        missingSide = sqrt((hypotenuse**2) - (legTwo**2))
-        return missingSide
-    elif legTwo == "x":
-        missingSide = sqrt((hypotenuse**2) - (legOne**2))
-        return missingSide
-    else:
-        missingSide = sqrt((legOne**2) + (legTwo**2))
-        return missingSide
+def pythagorean(leg_one, leg_two, hypotenuse):
+    if leg_one == "x":
+        _missing_side = sqrt((hypotenuse**2) - (leg_two**2))
+        return _missing_side
+    elif leg_two == "x":
+        _missing_side = sqrt((hypotenuse**2) - (leg_one**2))
+        return _missing_side
+    _missing_side = sqrt((leg_one**2) + (leg_two**2))
+    return _missing_side
 
 
-def continueProgram():
-    exit = input("Do you want to continue with the program? [Y/n] ")
-    if exit == "y" or exit == "":
+def continue_program():
+    system_exit = input("Do you want to continue with the program? [Y/n] ")
+    if system_exit == "y" or system_exit == "":
         main()
-    elif exit == "n":
+    elif system_exit == "n":
         raise SystemExit
     else:
         print("You entered {}, but it is a wrong command. Good bye!"
