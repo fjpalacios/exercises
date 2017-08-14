@@ -14,30 +14,35 @@ class Collatz:
 
 
 def main():
+    number = int_greather_than_0("Enter a number: ")
+    while number > 1:
+        collatz = Collatz(number)
+        if number % 2 == 0:
+            print("{} is even, dividing it by 2". format(number))
+            number = collatz.even_number()
+        else:
+            print("{} is odd, multiplying it 3 times and adding 1"
+                  .format(number))
+            number = collatz.odd_number()
+    print("In the end, the number obtained is {}".format(number))
+    continue_program()
+
+
+def int_greather_than_0(message):
     while True:
         try:
-            number = int(input("Enter a number: "))
+            _int_greather_than_0 = int(input(message))
         except ValueError:
             print("Please, enter a positive integer greater than 0")
             continue
         else:
-            while number <= 0:
+            while _int_greather_than_0 <= 0:
                 print("Please, enter a positive integer greater than 0")
                 try:
-                    number = int(input("Enter a number: "))
+                    _int_greather_than_0 = int(input(message))
                 except ValueError:
                     continue
-            while number > 1:
-                collatz = Collatz(number)
-                if number % 2 == 0:
-                    print("{} is even, dividing it by 2". format(number))
-                    number = collatz.even_number()
-                else:
-                    print("{} is odd, multiplying it 3 times and adding 1"
-                          .format(number))
-                    number = collatz.odd_number()
-        print("In the end, the number obtained is {}".format(number))
-        continue_program()
+            return _int_greather_than_0
 
 
 def continue_program():

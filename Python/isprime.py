@@ -3,28 +3,32 @@
 
 
 def main():
+    number = int_greather_than_0(
+        "Enter the number that you want to know if is a prime number: ")
+    is_prime_number = is_prime(number)
+    if is_prime_number:
+        print("{} is a prime number".format(number))
+    else:
+        print("{} is not a prime number ({})"
+              .format(number, prime_factors(number)))
+    continue_program()
+
+
+def int_greather_than_0(message):
     while True:
         try:
-            number = int(input("Enter the number that you want to know if " +
-                               "is a prime number: "))
+            _int_greather_than_0 = int(input(message))
         except ValueError:
             print("Please, enter a positive integer greater than 0")
             continue
         else:
-            while number <= 0:
+            while _int_greather_than_0 <= 0:
                 print("Please, enter a positive integer greater than 0")
                 try:
-                    number = int(input("Enter the number that you want to know"
-                                       + " if is a prime number: "))
+                    _int_greather_than_0 = int(input(message))
                 except ValueError:
                     continue
-            is_prime_number = is_prime(number)
-            if is_prime_number:
-                print("{} is a prime number".format(number))
-            else:
-                print("{} is not a prime number ({})"
-                      .format(number, prime_factors(number)))
-            continue_program()
+            return _int_greather_than_0
 
 
 def is_prime(number):

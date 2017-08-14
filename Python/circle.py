@@ -15,24 +15,29 @@ class Circle:
 
 
 def main():
+    number = int_greather_than_0("Enter a radius: ")
+    circle = Circle(number)
+    print("The area of a circle with radius {} is {} "
+          "and its perimeter is {}"
+          .format(number, circle.area(), circle.perimeter()))
+    continue_program()
+
+
+def int_greather_than_0(message):
     while True:
         try:
-            number = int(input("Enter a radius: "))
+            _int_greather_than_0 = int(input(message))
         except ValueError:
             print("Please, enter a positive integer greater than 0")
             continue
         else:
-            while number <= 0:
+            while _int_greather_than_0 <= 0:
                 print("Please, enter a positive integer greater than 0")
                 try:
-                    number = int(input("Enter a radius: "))
+                    _int_greather_than_0 = int(input(message))
                 except ValueError:
                     continue
-            circle = Circle(number)
-            print("The area of a circle with radius {} is {}"
-                  " and its perimeter is {}"
-                  .format(number, circle.area(), circle.perimeter()))
-            continue_program()
+            return _int_greather_than_0
 
 
 def continue_program():

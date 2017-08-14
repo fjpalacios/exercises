@@ -2,26 +2,29 @@
 
 
 def main():
+    number_of_prime_numbers = int_greather_than_0(
+        "How many prime numbers do you want to find out? ")
+    print("The first {} prime numbers are:"
+          .format(number_of_prime_numbers))
+    print(prime_numbers_generator(number_of_prime_numbers))
+    continue_program()
+
+
+def int_greather_than_0(message):
     while True:
         try:
-            number_of_prime_numbers = int(
-                input("How many prime numbers do you want to find out? "))
+            _int_greather_than_0 = int(input(message))
         except ValueError:
             print("Please, enter a positive integer greater than 0")
             continue
         else:
-            while number_of_prime_numbers <= 0:
+            while _int_greather_than_0 <= 0:
                 print("Please, enter a positive integer greater than 0")
                 try:
-                    number_of_prime_numbers = int(
-                        input("How many prime numbers do you want " +
-                              "to find out? "))
+                    _int_greather_than_0 = int(input(message))
                 except ValueError:
                     continue
-            print("The first {} prime numbers are:"
-                  .format(number_of_prime_numbers))
-            print(prime_numbers_generator(number_of_prime_numbers))
-            continue_program()
+            return _int_greather_than_0
 
 
 def prime_numbers_generator(number_of_prime_numbers):

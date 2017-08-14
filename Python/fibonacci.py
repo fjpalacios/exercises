@@ -2,28 +2,30 @@
 
 
 def main():
+    number_of_terms = int_greather_than_0(
+        "Enter how many terms of the Fibonacci Sequence you want to find: ")
+    print("The first {} terms of the Fibonacci Sequence are:"
+          .format(number_of_terms))
+    for i in range(number_of_terms):
+        print(fibonacci(i), end=" ")
+    continue_program()
+
+
+def int_greather_than_0(message):
     while True:
         try:
-            number_of_terms = int(
-                input("Enter how many terms of the Fibonacci " +
-                      "Sequence you want to find: "))
+            _int_greather_than_0 = int(input(message))
         except ValueError:
             print("Please, enter a positive integer greater than 0")
             continue
         else:
-            while number_of_terms <= 0:
+            while _int_greather_than_0 <= 0:
                 print("Please, enter a positive integer greater than 0")
                 try:
-                    number_of_terms = int(
-                        input("Enter how many terms of the " +
-                              "Fibonacci Sequence you want to find: "))
+                    _int_greather_than_0 = int(input(message))
                 except ValueError:
                     continue
-            print("The first {} terms of the Fibonacci Sequence are:"
-                  .format(number_of_terms))
-            for i in range(number_of_terms):
-                print(fibonacci(i), end=" ")
-            continue_program()
+            return _int_greather_than_0
 
 
 def fibonacci(number):

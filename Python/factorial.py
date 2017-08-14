@@ -2,22 +2,27 @@
 
 
 def main():
+    number_of_terms = int_greather_than_0("Enter a number: ")
+    value_factorial = factorial(number_of_terms)
+    print("Factorial of", number_of_terms, "is", value_factorial)
+    continue_program()
+
+
+def int_greather_than_0(message):
     while True:
         try:
-            number_of_terms = int(input("Enter a number: "))
+            _int_greather_than_0 = int(input(message))
         except ValueError:
-            print("Please, enter a positive integer")
+            print("Please, enter a positive integer greater than 0")
             continue
         else:
-            while number_of_terms < 0:
-                print("Please, enter a positive integer")
+            while _int_greather_than_0 <= 0:
+                print("Please, enter a positive integer greater than 0")
                 try:
-                    number_of_terms = int(input("Enter a number: "))
+                    _int_greather_than_0 = int(input(message))
                 except ValueError:
                     continue
-            value_factorial = factorial(number_of_terms)
-            print("Factorial of", number_of_terms, "is", value_factorial)
-            continue_program()
+            return _int_greather_than_0
 
 
 def factorial(number):

@@ -2,24 +2,29 @@
 
 
 def main():
+    number_of_disks = int_greather_than_0("Enter a number of disks: ")
+    number_of_moves = 2**number_of_disks - 1
+    print("At least {} moves required to solve this game"
+          .format(number_of_moves))
+    hanoi(number_of_disks, 1, 2, 3)
+    continue_program()
+
+
+def int_greather_than_0(message):
     while True:
         try:
-            number_of_disks = int(input("Enter a number of disks: "))
+            _int_greather_than_0 = int(input(message))
         except ValueError:
-            print("In order to play enter one disk at least")
+            print("Please, enter a positive integer greater than 0")
             continue
         else:
-            while number_of_disks <= 0:
-                print("In order to play enter one disk at least")
+            while _int_greather_than_0 <= 0:
+                print("Please, enter a positive integer greater than 0")
                 try:
-                    number_of_disks = int(input("Enter a number of disks: "))
+                    _int_greather_than_0 = int(input(message))
                 except ValueError:
                     continue
-            number_of_moves = 2**number_of_disks - 1
-            print("At least {} moves required to solve this game"
-                  .format(number_of_moves))
-            hanoi(number_of_disks, 1, 2, 3)
-            continue_program()
+            return _int_greather_than_0
 
 
 def hanoi(number_of_disks, initial_stack, auxiliar_stack, final_stack):
