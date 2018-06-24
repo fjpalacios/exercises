@@ -1,3 +1,4 @@
+import isprime.IsPrime;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import java.util.List;
