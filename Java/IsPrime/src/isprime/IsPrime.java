@@ -1,6 +1,6 @@
 /*
-* A simple code to practice finding out if a number is prime or not
-* If it is not a prime number, its prime factorization is printed
+ * A simple code to practice finding out if a number is prime or not
+ * If it is not a prime number, its prime factorization is printed
  */
 package isprime;
 
