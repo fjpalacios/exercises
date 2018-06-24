@@ -1,3 +1,4 @@
+import primenumbers.PrimeNumbers;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import java.util.List;

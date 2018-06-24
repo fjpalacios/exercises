@@ -1,10 +1,15 @@
 // A simple code to practice printing a list of the first n prime numbers
+package primenumbers;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
+/**
+ *
+ * @author Javi Palacios <javi@fjp.es>
+ */
 public class PrimeNumbers {
 
     private static boolean continueProgram = true;
@@ -12,35 +17,27 @@ public class PrimeNumbers {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
         while (continueProgram) {
-            int numberOfPrimeNumbers = intGreaterThan0(
-                    "How many prime numbers do you want to find out?: ", scan);
-            System.out.printf("The first %d prime numbers are: %n",
-                    numberOfPrimeNumbers);
-            List<Integer> intList = primeNumbersGenerator(numberOfPrimeNumbers);
-            String primeNumbers = intList.stream()
-                    .map(Object::toString)
-                    .collect(Collectors.joining(" "));
-            System.out.print(primeNumbers);
-            continueProgram(scan);
+            try {
+                int numberOfPrimeNumbers = intGreaterThan0(
+                        "How many prime numbers do you want to find out?: ", scan);
+                System.out.printf("The first %d prime numbers are: %n",
+                        numberOfPrimeNumbers);
+                List<Integer> intList = primeNumbersGenerator(numberOfPrimeNumbers);
+                String primeNumbers = integerListToString(intList);
+                System.out.print(primeNumbers);
+                continueProgram(scan);
+            } catch (NumberFormatException ex) {
+                System.out.println("Please, enter a positive integer.");
+            }
         }
     }
 
-    private static int intGreaterThan0(String message, Scanner scan) {
+    private static int intGreaterThan0(String message, Scanner scan)
+            throws NumberFormatException {
         int intGreaterThan0 = 0;
-        boolean integer = false;
         do {
-            try {
-                System.out.print(message);
-                intGreaterThan0 = Integer.parseInt(scan.nextLine());
-                integer = true;
-            } catch (Exception e) {
-                System.out.println("Please enter a positive integer.");
-            }
-            if (integer && intGreaterThan0 < 1) {
-                System.out.println("Please enter a positive integer "
-                        + "greater than 0.");
-                integer = false;
-            }
+            System.out.print(message);
+            intGreaterThan0 = Integer.parseInt(scan.nextLine());
         } while (intGreaterThan0 < 1);
         return intGreaterThan0;
     }
@@ -66,6 +63,14 @@ public class PrimeNumbers {
             number += 1;
         }
         return primeFactors;
+    }
+
+    public static String integerListToString(List<Integer> list) {
+        String string = "";
+        for (Integer integer : list) {
+            string += String.format("%d ", integer);
+        }
+        return string;
     }
 
     private static void continueProgram(Scanner scan) {
