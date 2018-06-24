@@ -1,7 +1,12 @@
 // A simple code to practice recursion using the Factorial of a number (n!)
+package factorial;
 
 import java.util.Scanner;
 
+/**
+ *
+ * @author Javi Palacios <javi@fjp.es>
+ */
 public class Factorial {
 
     private static boolean continueProgram = true;
@@ -9,10 +14,14 @@ public class Factorial {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
         while (continueProgram) {
-            int number = intGreaterThan0("Enter a number: ", scan);
-            double factorial = factorial(number);
-            System.out.printf("Factorial of %d is %.0f", number, factorial);
-            continueProgram(scan);
+            try {
+                int number = intGreaterThan0("Enter a possitive number: ", scan);
+                double factorial = factorial(number);
+                System.out.printf("Factorial of %d is %.0f", number, factorial);
+                continueProgram(scan);
+            } catch (NumberFormatException ex) {
+                System.out.println("Please, enter a positive integer.");
+            }
         }
     }
 
@@ -24,22 +33,12 @@ public class Factorial {
         }
     }
 
-    private static int intGreaterThan0(String message, Scanner scan) {
+    private static int intGreaterThan0(String message, Scanner scan)
+            throws NumberFormatException {
         int intGreaterThan0 = 0;
-        boolean integer = false;
         do {
-            try {
-                System.out.print(message);
-                intGreaterThan0 = Integer.parseInt(scan.nextLine());
-                integer = true;
-            } catch (Exception e) {
-                System.out.println("Please enter a positive integer.");
-            }
-            if (integer && intGreaterThan0 < 1) {
-                System.out.println("Please enter a positive integer "
-                        + "greater than 0.");
-                integer = false;
-            }
+            System.out.print(message);
+            intGreaterThan0 = Integer.parseInt(scan.nextLine());
         } while (intGreaterThan0 < 1);
         return intGreaterThan0;
     }
