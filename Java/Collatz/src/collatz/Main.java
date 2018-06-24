@@ -1,7 +1,12 @@
-// A simple code to practice OOP and Control Structures using the Collatz conjecture
+// A simple code to practice Control Structures using the Collatz conjecture
+package collatz;
 
 import java.util.Scanner;
 
+/**
+ *
+ * @author Javi Palacios <javi@fjp.es>
+ */
 public class Main {
 
     private static boolean continueProgram = true;
@@ -9,28 +14,22 @@ public class Main {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
         while (continueProgram) {
-            int number = intGreaterThan0("Enter a positive number: ", scan);
-            conjecture(number);
-            continueProgram(scan);
+            try {
+                int number = intGreaterThan0("Enter a positive number: ", scan);
+                conjecture(number);
+                continueProgram(scan);
+            } catch (NumberFormatException ex) {
+                System.out.println("Please, enter a positive integer.");
+            }
         }
     }
 
-    private static int intGreaterThan0(String message, Scanner scan) {
+    private static int intGreaterThan0(String message, Scanner scan)
+            throws NumberFormatException {
         int intGreaterThan0 = 0;
-        boolean integer = false;
         do {
-            try {
-                System.out.print(message);
-                intGreaterThan0 = Integer.parseInt(scan.nextLine());
-                integer = true;
-            } catch (Exception e) {
-                System.out.println("Please enter a positive integer.");
-            }
-            if (integer && intGreaterThan0 < 1) {
-                System.out.println("Please enter a positive integer "
-                        + "greater than 0.");
-                integer = false;
-            }
+            System.out.print(message);
+            intGreaterThan0 = Integer.parseInt(scan.nextLine());
         } while (intGreaterThan0 < 1);
         return intGreaterThan0;
     }
@@ -53,9 +52,9 @@ public class Main {
     private static void continueProgram(Scanner scan) {
         System.out.print("\nDo you want to continue with the program? [Y/n] ");
         String exit = scan.nextLine();
-        if ("y".equals(exit) || "".equals(exit)) {
+        if ("y".equalsIgnoreCase(exit) || "".equals(exit)) {
             continueProgram = true;
-        } else if ("n".equals(exit)) {
+        } else if ("n".equalsIgnoreCase(exit)) {
             continueProgram = false;
         } else {
             System.out.println("You entered a wrong command. Good bye!");

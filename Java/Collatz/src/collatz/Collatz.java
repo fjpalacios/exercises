@@ -1,3 +1,5 @@
+package collatz;
+
 class Collatz {
 
     private final int number;
