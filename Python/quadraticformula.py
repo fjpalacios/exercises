@@ -5,7 +5,6 @@ when the equation is incomplete (it has no b or c terms)'''
 
 
 from math import sqrt
-from decimal import Decimal
 
 
 class QuadraticFormula:
@@ -19,12 +18,12 @@ class QuadraticFormula:
 
     def get_root(self):
         root = self.formula()
-        print("Solution: {}".format(Decimal(root[0]).normalize()))
+        print("Solution: {0:.3f}".format(root[0]))
 
     def get_roots(self):
         roots = self.formula()
-        print("Solution one: {}".format(Decimal(roots[0]).normalize()))
-        print("Solution two: {}".format(Decimal(roots[1]).normalize()))
+        print("Solution one: {0:.3f}".format(roots[0]))
+        print("Solution two: {0:.3f}".format(roots[1]))
 
     def formula(self):
         solutions = []
@@ -89,13 +88,14 @@ def set_side(term, term_b=None):
 
 def continue_program():
     system_exit = input("Do you want to continue with the program? [Y/n] ")
+    system_exit = system_exit.lower()
     if system_exit == "y" or system_exit == "":
         main()
     elif system_exit == "n":
         raise SystemExit
     else:
         print("You entered {}, but it is a wrong command. Good bye!"
-              .format(exit))
+              .format(system_exit))
         raise SystemExit
 
 
