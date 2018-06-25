@@ -2,7 +2,6 @@
 # of a right triangle using the Pythagorean theorem
 
 from math import sqrt
-from decimal import Decimal
 
 
 def main():
@@ -34,11 +33,11 @@ def set_side(side, leg_one=None, leg_two=None):
 def missing_side(leg_one, leg_two, hypotenuse):
     _missing_side = pythagorean(leg_one, leg_two, hypotenuse)
     if leg_one == "x":
-        print("Leg one is: {}".format(Decimal(_missing_side).normalize()))
+        print("Leg one is: {0:.3f}".format(_missing_side))
     elif leg_two == "x":
-        print("Leg two is: {}".format(Decimal(_missing_side).normalize()))
+        print("Leg two is: {0:.3f}".format(_missing_side))
     else:
-        print("Hypotenuse is: {}".format(Decimal(_missing_side).normalize()))
+        print("Hypotenuse is: {0:.3f}".format(_missing_side))
 
 
 def pythagorean(leg_one, leg_two, hypotenuse):
@@ -54,13 +53,14 @@ def pythagorean(leg_one, leg_two, hypotenuse):
 
 def continue_program():
     system_exit = input("Do you want to continue with the program? [Y/n] ")
+    system_exit = system_exit.lower()
     if system_exit == "y" or system_exit == "":
         main()
     elif system_exit == "n":
         raise SystemExit
     else:
         print("You entered {}, but it is a wrong command. Good bye!"
-              .format(exit))
+              .format(system_exit))
         raise SystemExit
 
 
